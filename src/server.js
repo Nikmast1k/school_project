@@ -6,7 +6,6 @@ const app = express()
 
 app.use(express.urlencoded())
 app.set("view engine", "ejs")
-
 const logger = require('./middleware/logger')
 const indexRouter = require('./routes/pocketsage')
 const error_404 = require('./middleware/error-404')

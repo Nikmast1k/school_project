@@ -4,7 +4,7 @@ const router = express.Router()
 const user = {
     "id": "1",
     "name": "Вуймов Никита",
-    "isLogged": false
+    "isLogged": true
 }
 
 router.get('/pocketsages', (req, res) => {
