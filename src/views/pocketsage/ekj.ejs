@@ -3,30 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="stylesheet" type="text/css" href="../style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>PocketSage</title>
 
 
 </head>
 <body>
 
+<style>
+    .bn3637 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 2rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        backface-visibility: hidden;
+        border: 0.3rem solid transparent;
+        border-radius: 3rem;
+
+    }
+
+    .bn36 {
+        border-color: #fff;
+        transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+    }
+
+    .bn36:hover {
+        transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+    }
+</style>
+
 <% if(user.isLogged) { %>
-    <h1 class="display-4">Электронный дневник</h1>
+    <div style="text-align: center;"><h1>Электронный дневник</h1></div>
     <br>
 
-    <label class="checkbox" id="1">
-        <input type="checkbox" class="checkbox__input">
-        Оценки
-        <div class="checkbox__div"></div>
-    </label>
+    <div style="text-align: center;"><a href="#" class="bn3637 bn36" id="1">Оценки</a> <a href="#" class="bn3637 bn36" id="2">ДЗ</a></div>
+    <br><br>
 
-    <label class="checkbox" id="2">
-        <input type="checkbox" class="checkbox__input">
-        Список ДЗ
-        <div class="checkbox__div"></div>
-    </label>
+    <div style="text-align: center" id="spacee">
+
+    </div>
+
+    <script>
+
+        const marks_content = '<p>Выберите предмет(выпадающий список)</p> \
+                            <p>Узнать оценки(кнопка)</p> \
+                            <p>{Название предмета}:{Оценки} (поле)</p>'
+
+        const homework_content = '<p>Введите дату(в формате 01.01) (поле)</p> \
+                                <p>Получить список ДЗ (кнопка)</p> \
+                                <p> \
+                                    {Предмет}: {ДЗ} \
+                                    {Предмет}: {ДЗ} \
+                                    (Таблица) \
+                                </p>'
+
+        elem = document.getElementById('1')
+        elem.addEventListener('click', () => {
+            $('#spacee').html(marks_content)
+        })
+        elem2 = document.getElementById('2')
+        elem2.addEventListener('click', () => {
+            $('#spacee').html(homework_content)
+        })
+    </script>
+
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
 

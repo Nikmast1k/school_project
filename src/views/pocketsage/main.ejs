@@ -12,23 +12,30 @@
 </head>
 <body>
 
-<h1 class="ws_title">PocketSage</h1>
+<div style="text-align: center;"><h1 style="font-size: 82px;font-family: sans-serif; margin-bottom: -12vh">PocketSage</h1></div>
 
 <section class="dashboard">
     <div class="dashboard__content">
         <div class="dashboard__person">
             <div class="info-card">
                 <div class="info-card__text">
-                    <p class="info-card__subtitle"> Карточка ученика </p>
-                    <br>
-                    <h3 class="info-card__title"><%= user.name %></h3>
-                    <p class="info-card__school"> Школа № <%= user.school %></p>
+                    <% if(user.name !== 'no_information323') { %>
+                        <p class="info-card__subtitle"> Карточка ученика </p>
+                        <br>
+                        <h3 class="info-card__title"><%= user.name %></h3>
+                        <p class="info-card__school"> Школа № <%= user.school %></p>
+                    <% } else { %>
+                        <br>
+                        <h3 class="info-card__title"><a href="http://localhost:3002/pocketsages/card_settings" class="card_but" style="font-size: 30px">Настройте карточку ученика</a> </h3>
+                    <% } %>
+
                 </div>
             </div>
             <div class="view-selector">
-                <a class="card_but" href="http://localhost:3002/pocketsages/log_in" id="lg">Войти в аккаунт ГОСУСЛУГИ</a>
-                <a class="card_but" href="http://localhost:3002/pocketsages/card_settings" id="card_set">Настройка карточки</a>
-                <a class="card_but" href="http://localhost:3002/pocketsages/error_feedback" id="er_fd">Сообщить об ошибке</a>
+                <a  style="color: white; text-decoration: none; margin-bottom: 1rem; margin-right: 0.5rem; margin-left: -1rem" href="http://localhost:3002/pocketsages/log_in" id="lg">Войти в аккаунт ГОСУСЛУГИ</a>
+                <a  style="color: white; text-decoration: none; margin-bottom: 1rem; margin-right: 2rem; margin-left: -1rem" href="http://localhost:3002/pocketsages/card_settings" id="card_set">Настройка карточки</a>
+                <a  style="color: white; text-decoration: none; margin-bottom: 1rem; margin-left: -1rem" href="http://localhost:3002/pocketsages/error_feedback" id="er_fd">Сообщить об ошибке</a>
+                <br>
             </div>
         </div>
 
@@ -92,6 +99,7 @@
 <div class="attribution">
     Coded by Vuimov Nikita
 </div>
+
 <script>
     document.getElementById('ekj').onclick = function () {window.location.href = "http://localhost:3002/pocketsages/ekj"}
     document.getElementById('actirovka').onclick = function () {window.location.href = "http://localhost:3002/pocketsages/actirovka"}

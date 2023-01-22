@@ -190,6 +190,15 @@ body {
         text-decoration: none;
         color: white;
     }
+
+    .info-card_but {
+        margin-bottom: 1rem;
+        text-decoration: none;
+        color: white;
+        position: absolute;
+        display: block;
+    }
+
     .tracking-card__body {
         flex-direction: column;
         align-items: flex-start;
@@ -207,8 +216,6 @@ body {
         --offset: 3px;
         --duration: 0.3s;
         cursor: pointer;
-        display: inline-block;
-        margin: 0 auto;
     }
 
     .checkbox:hover {
@@ -253,6 +260,33 @@ body {
         text-align: center;
         vertical-align: middle;
     }
+
+    .bn3637 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 2rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        backface-visibility: hidden;
+        border: 0.3rem solid transparent;
+        border-radius: 3rem;
+
+    }
+
+    .bn36 {
+        border-color: #fff;
+        transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+    }
+
+    .bn36:hover {
+        transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+    }
+
 
 }
 

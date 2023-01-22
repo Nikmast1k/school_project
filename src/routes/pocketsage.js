@@ -3,8 +3,8 @@ const router = express.Router()
 
 const user = {
     "id": "1",
-    "name": "Вуймов Никита",
-    "isLogged": false,
+    "name": "Вуймов Никита", //no_information323
+    "isLogged": true,
     "school": 5
 }
 

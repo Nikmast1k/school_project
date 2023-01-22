@@ -6,7 +6,7 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="stylesheet" type="text/css" href="../style.css">
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>PocketSage</title>
 
 </head>
@@ -15,22 +15,39 @@
 <% if(user.isLogged === false) { %>
     <h1 class="display-4">Вход в аккаунт</h1>
     <img src="../gosuslugi-icon-2-transformed.png" width="500" style="display: block; margin: 0 auto"/>
-    <h2>Логин</h2>
-    <h2>Пароль</h2>
-    <p>Войти</p>
+    <div style="text-align: center;"><h2>Логин</h2> </div>
+    <div style="text-align: center;"><h2>Пароль</h2></div>
+    <div style="text-align: center;"><p>Войти</p></div>
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 <% } else { %>
-    <h1 class="display-4">Это пока пустой шаблон</h1>
+    <div id="contentt">
+        <div style="text-align: center;"><h1>Вы уже вошли в свой аккаунт</h1></div>
+        <div style="text-align: center"><a href="#" style="font-size: 30px; color: white" id="change">Сменить пользователя</a></div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <script type="text/javascript" src="src/routes/pocketsage.js"></script>
+    <script>
+        const code = '<div style="text-align: center;"><h1>Вход в аккаунт</h1></div> \
+                    <img src="../gosuslugi-icon-2-transformed.png" width="500" style="display: block; margin: 0 auto"/> \
+                    <div style="text-align: center;"><h2>Логин</h2> </div>\
+                    <div style="text-align: center;"><h2>Пароль</h2></div> \
+                    <div style="text-align: center;"><p>Войти</p></div> \
+                    <br><br><br><br><br>'
+
+        elem = document.getElementById('change')
+        elem.addEventListener('click', ()=> {
+            $('#contentt').html(code)
+        })
+    </script>
 <% } %>
 
 <div class="attribution">
     Coded by Vuimov Nikita
 </div>
 
-<script>
-</script>
 
 </body>
 </html>
