@@ -11,20 +11,50 @@
 </head>
 <body>
 
-<% if(user.isLogged) { %>
-    <div style="text-align: center;"><h1 class="display-4">Это пока пустой шаблон</h1></div>
-<% } else { %>
-    <a href="http://localhost:3002/pocketsages/log_in" style="color: white">
-        <h1 class="display-4">Войдите в свой аккаунт ГОСУСЛУГИ</h1>
-    </a>
-<% } %>
+<style>
+    .bn3637 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 2rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        backface-visibility: hidden;
+        border: 0.3rem solid transparent;
+        border-radius: 3rem;
 
-<div class="attribution">
-    Coded by Vuimov Nikita
-</div>
+    }
+
+    .bn36 {
+        border-color: #fff;
+        transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+    }
+
+    .bn36:hover {
+        transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+    }
+</style>
+
+<div style="text-align: center; font-size: 30px"><h1>Актировка</h1></div>
+<br><br><br><br>
+<div style="text-align: center;"><a href="#" class="bn3637 bn36" id="check_">Проверить актировку</a>
+
+<br><br><br><br>
+<div style="text-align: center; font-size: 25px">1 Смена: </div>
+<br>
+<div style="text-align: center; font-size: 25px">2 Смена: </div>
+<br><br><br>
+<div style="text-align: center; font-size: 25px">Текущая температура: </div>
+<br>
+<div style="text-align: center; font-size: 25px">Текущая скорость ветра: </div>
 
 <script>
 </script>
 
+<div style="position:fixed; left:0; bottom:0; width:100%; text-align:center; font-size: 14px">Coded By Vuimov Nikita</div>
 </body>
 </html>
