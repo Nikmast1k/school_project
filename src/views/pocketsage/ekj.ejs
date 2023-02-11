@@ -308,29 +308,38 @@
     <script>
 
         const marks_content = '<div class="container">\
-                            <button class="click">Выберите предмет</button>\
+                            <button class="click"><a href="#" style="color: white">Выберите предмет</a></button>\
                             \
                             <div class="list">\
-                                <button class="links">Математика</button>\
-                                <button class="links">Физика</button>\
+                                <button class="links">Алгебра</button>\
+                                <button class="links">Англ. яз.</button>\
+                                <button class="links">Астрономия</button>\
+                                <button class="links">Биология</button>\
+                                <button class="links">Вероятность и статистика</button>\
+                                <button class="links">Всеобщая история</button>\
+                                <button class="links">География</button>\
+                                <button class="links">Геометрия</button>\
+                                <button class="links">Изобразительное искусство</button>\
                                 <button class="links">Информатика</button>\
-                                <button class="links">Литература</button>\
                                 <button class="links">История</button>\
+                                <button class="links">История России</button>\
+                                <button class="links">Литература</button>\
                                 <button class="links">Математика</button>\
+                                <button class="links">Музыка</button>\
+                                <button class="links">ОБЖ</button>\
+                                <button class="links">Обществознание</button>\
+                                <button class="links">Право</button>\
+                                <button class="links">Родная литература</button>\
+                                <button class="links">Родной язык</button>\
+                                <button class="links">Русский язык</button>\
+                                <button class="links">Технология</button>\
+                                <button class="links">Экономика</button>\
+                                <button class="links">Экология</button>\
                                 <button class="links">Физика</button>\
-                                <button class="links">Информатика</button>\
-                                <button class="links">Литература</button>\
-                                <button class="links">История</button>\
-                                <button class="links">Математика</button>\
-                                <button class="links">Физика</button>\
-                                <button class="links">Информатика</button>\
-                                <button class="links">Литература</button>\
-                                <button class="links">История</button>\
-                                <button class="links">Математика</button>\
-                                <button class="links">Физика</button>\
-                                <button class="links">Информатика</button>\
-                                <button class="links">Литература</button>\
-                                <button class="links">История</button>\
+                                <button class="links">Физкультура</button>\
+                                <button class="links">Химия</button>\
+                                <button class="links">Иностранный язык</button>\
+                                <button class="links">Естествознание</button>\
                             </div>\
                             \
                             </div>\
@@ -345,7 +354,7 @@
                                     <div class="login-card-header">\
                                     <h1>Введите дату в формате 01.01</h1>\
                                 </div>\
-                                <form class="login-card-form" action="http://localhost:3002/pocketsages">\
+                                <form class="login-card-form" action="http://localhost:3002/pocketsage">\
                                     <div class="form-item">\
                                         <input type="text" placeholder="Дата" id="emailForm"\
                                                autofocus required>\
@@ -374,7 +383,7 @@
 
 
 <% } else { %>
-    <a href="http://localhost:3002/pocketsages/log_in" style="color: white">
+    <a href="http://localhost:3002/pocketsage/log_in" style="color: white">
     <h1 class="display-4">Войдите в свой аккаунт ГОСУСЛУГИ</h1>
     </a>
 <% } %>

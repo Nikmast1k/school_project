@@ -117,9 +117,7 @@ body {
 .dashboard__item--play {
     background-color: var(--blue-100);
 }
-.dashboard__item--study {
-    background-color: var(--red-200);
-}
+
 .dashboard__item--exercise {
     background-color: var(--green-100);
 }
@@ -486,7 +484,6 @@ body {
     /*    }*/
 
     /*}*/
-
 
 }
 

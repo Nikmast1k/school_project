@@ -6,17 +6,285 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="stylesheet" type="text/css" href="../style.css">
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>PocketSage</title>
+
+    <style>
+
+        input[type="number"] {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+
+
+        .checkbox {
+            --first-color: #243743;
+            --second-color: #28b78d;
+            --width: 70px;
+            --height: 40px;
+            --offset: 3px;
+            --duration: 0.3s;
+            cursor: pointer;
+        }
+
+        .checkbox:hover {
+            filter:brightness(1.2);
+        }
+
+        .checkbox__div {
+            position: relative;
+            width: var(--width);
+            height: var(--height);
+            border-radius: var(--width);
+            background-color: var(--first-color);
+            transition: var(--duration);
+        }
+
+        .checkbox__input {
+            display: none;
+        }
+
+        .checkbox__input:checked ~ .checkbox__div {
+            background-color: var(--second-color);
+        }
+
+        .checkbox__input:checked ~ .checkbox__div:before {
+            background-color: var(--first-color);
+            left: calc(var(--width) - var(--height) + var(--offset));
+        }
+
+        .checkbox__div:before {
+            content: '';
+            position: absolute;
+            top: var(--offset);
+            left: var(--offset);
+            width: calc(var(--height) - 2 * var(--offset));
+            height: calc(var(--height) - 2 * var(--offset));
+            background-color: var(--second-color);
+            border-radius: 50%;
+            transition: var(--duration);
+        }
+
+        .container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .click{
+            background-color: transparent;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .click:hover {
+            background-color: transparent;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        .click,.links {
+            padding: 12px;
+            font-size: 1.2em;
+            border: none;
+            outline: none;
+            width:200px;
+            color:#fff;
+            transition: 0.3s;
+        }
+
+        .list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: 0.3s;
+        }
+
+        .newlist {
+            transform: scaleY(1);
+        }
+
+        .links {
+            background-color: #283c63;
+        }
+
+        .links:hover {
+            background-color: #01579B;
+            transform: scale(1.05);
+        }
+
+        .bn3637 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.7rem 2rem;
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            backface-visibility: hidden;
+            border: 0.3rem solid transparent;
+            border-radius: 3rem;
+
+        }
+
+        .bn36 {
+            border-color: #fff;
+            transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+        }
+
+        .bn36:hover {
+            transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+        }
+
+    </style>
 
 </head>
 <body>
 
-<div style="text-align: center;"><h1 class="display-4">Это пока пустой шаблон</h1></div>
+<% if(user.isLogged) { %>
+    <div style="text-align: center;"><h1 style="font-size: 45px">Калькулятор оценок</h1></div>
+    <br><br>
+    <label class="checkbox">
+        <input type="checkbox" id="option_page" class="checkbox__input">
+        <div class="checkbox__div"></div>
+    </label>
+    <div>Не использовать мои оценки</div>
 
+    <br>
+    <div id="page_content">
+    <div class="container">
+        <button  class="click"><a href="#" style="color: white">Выберите предмет</a></button>
+        <div class="list">
+            <button class="links">Алгебра</button>
+            <button class="links">Англ. яз.</button>
+            <button class="links">Астрономия</button>
+            <button class="links">Биология</button>
+            <button class="links">Вероятность и статистика</button>
+            <button class="links">Всеобщая история</button>
+            <button class="links">География</button>
+            <button class="links">Геометрия</button>
+            <button class="links">Изобразительное искусство</button>
+            <button class="links">Информатика</button>
+            <button class="links">История</button>
+            <button class="links">История России</button>
+            <button class="links">Литература</button>
+            <button class="links">Математика</button>
+            <button class="links">Музыка</button>
+            <button class="links">ОБЖ</button>
+            <button class="links">Обществознание</button>
+            <button class="links">Право</button>
+            <button class="links">Родная литература</button>
+            <button class="links">Родной язык</button>
+            <button class="links">Русский язык</button>
+            <button class="links">Технология</button>
+            <button class="links">Экономика</button>
+            <button class="links">Экология</button>
+            <button class="links">Физика</button>
+            <button class="links">Физкультура</button>
+            <button class="links">Химия</button>
+            <button class="links">Иностранный язык</button>
+            <button class="links">Естествознание</button>
+        </div>
+    </div>
 
-<script>
-</script>
+        <script>
+            $(document).ready(function() {
+                var content = $("#page_content").html();
+                $("#option_page").change(function() {
+                    if ($(this).is(":checked")) {
+                        $("#page_content").html(`
+              <div style="text-align: center">
+                <br>
+                <div>Введите ваши оценки(количество): </div>
+                <br><br>
+                <div>
+              <span>5: <input type="number" size="1" min="0" style="display: inline-block;" /></span>
+              <span>4: <input type="number" size="1" min="0" style="display: inline-block;" /></span>
+              <span>3: <input type="number" size="1" min="0" style="display: inline-block;" /></span>
+              <span>2: <input type="number" size="1" min="0" style="display: inline-block;" /></span>
+              <span>1: <input type="number" size="1" min="0" style="display: inline-block;" /></span>
+                </div>
+
+                <br><br>
+                <div><p style="font-size: 15px">Желаемая оценка(число)</p></div>
+                <div><input type="number" min="1" max="5" style="width: 50px; height: 50px; font-size: 20px;"></div><br>
+                <div><a href="#" class="bn3637 bn36" id="100111">Рассчитать оценки</a></div>
+                <br><br><br><br>
+                <div id="space_for_result_no_ekj">Здесь будет результат</div>
+                <br><br><br><br>
+              </div>`);
+
+              const bcl = document.getElementById('100111')
+              bcl.addEventListener('click', ()=> {
+                  alert('clicked')
+              } )
+
+                    } else {
+                        location.reload()
+                    }
+                });
+            });
+        </script>
+    <br><br><br><br><br><br><br><br>
+
+    <div style="position: absolute;left: 50%;transform: translateX(-50%);display: flex;justify-content: center;align-items: center;" id="space_for_btns">
+
+    </div>
+
+    </div>
+    <script type="text/javascript">
+        const spaceForBtnsContentCalc = '<div style="text-align: center">\
+            <div><input type="number" min="1" max="5" style="width: 50px; height: 50px; font-size: 20px;"></div><br>\
+            <div><p style="font-size: 15px">Желаемая оценка(число)</p></div> \
+            <br>\
+            <div><a href="#" class="bn3637 bn36" id="1001">Рассчитать оценки</a></div>\
+            <br><br><br><br><br><br>\
+            <div  id="space_for_result">Здесь будет результат</div>\
+            <br><br><br><br><br><br>\
+            </div>';
+
+        let btnsSpaceCalc = document.getElementById('space_for_btns');
+
+        let clickCalc = document.querySelector('.click');
+        let listCalc = document.querySelector('.list');
+        clickCalc.addEventListener("click", () => {
+            btnsSpaceCalc.innerHTML = '';
+            listCalc.classList.toggle('newlist');
+        });
+
+        let buttonsCalc = document.querySelectorAll('.links');
+        buttonsCalc.forEach(button => {
+            button.removeEventListener("click", updateButton);
+        });
+
+        function updateButton() {
+            listCalc.classList.toggle('newlist');
+            btnsSpaceCalc.innerHTML = spaceForBtnsContentCalc;
+        }
+
+        buttonsCalc = document.querySelectorAll('.links');
+        buttonsCalc.forEach(button => {
+            button.addEventListener("click", updateButton);
+        });
+    </script>
+
+<% } else { %>
+    <a href="http://localhost:3002/pocketsage/log_in" style="color: white">
+        <h1 class="display-4">Войдите в свой аккаунт ГОСУСЛУГИ</h1>
+    </a>
+<% } %>
+
 
 <div style="position:fixed; left:0; bottom:0; width:100%; text-align:center; font-size: 14px">Coded By Vuimov Nikita</div>
 </body>

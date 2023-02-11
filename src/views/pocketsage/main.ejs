@@ -25,15 +25,15 @@
                         <p class="info-card__school"> Школа № <%= user.school %></p>
                     <% } else { %>
                         <br>
-                        <h3 class="info-card__title"><a href="http://localhost:3002/pocketsages/card_settings" class="card_but" style="font-size: 30px">Настройте карточку ученика</a> </h3>
+                        <h3 class="info-card__title"><a href="http://localhost:3002/pocketsage/card_settings" class="card_but" style="font-size: 30px">Настройте карточку ученика</a> </h3>
                     <% } %>
 
                 </div>
             </div>
             <div class="view-selector">
-                <a  style="color: white; text-decoration: none; margin-bottom: 1rem; margin-right: 0.5rem; margin-left: -1rem" href="http://localhost:3002/pocketsages/log_in" id="lg">Войти в аккаунт ГОСУСЛУГИ</a>
-                <a  style="color: white; text-decoration: none; margin-bottom: 1rem; margin-right: 2rem; margin-left: -1rem" href="http://localhost:3002/pocketsages/card_settings" id="card_set">Настройка карточки</a>
-                <a  style="color: white; text-decoration: none; margin-bottom: 1rem; margin-left: -1rem" href="http://localhost:3002/pocketsages/error_feedback" id="er_fd">Сообщить об ошибке</a>
+                <a  style="color: white; margin-bottom: 1rem; margin-right: 0.5rem; margin-left: -1rem" href="http://localhost:3002/pocketsage/log_in" id="lg">Войти в аккаунт ГОСУСЛУГИ</a>
+                <a  style="color: white; margin-bottom: 1rem; margin-right: 2rem; margin-left: -1rem" href="http://localhost:3002/pocketsage/card_settings" id="card_set">Настройка карточки</a>
+                <a  style="color: white; margin-bottom: 1rem; margin-left: -1rem" href="http://localhost:3002/pocketsage/error_feedback" id="er_fd">Сообщить об ошибке</a>
                 <br>
             </div>
         </div>
@@ -59,16 +59,6 @@
             </article>
         </div>
 
-        <div class="dashboard__item dashboard__item--study" id="notes">
-            <article class="tracking-card">
-
-                <div class="tracking-card__body">
-                    <div class="tracking-card__time">Мои заметки</div>
-                    <br>
-                    <div class="tracking-card__prev-period">Записывайте, редактируйте и удаляйте нужную информацию</div>
-                </div>
-            </article>
-        </div>
 
         <div class="dashboard__item dashboard__item--exercise" id="links">
             <article class="tracking-card">
@@ -76,7 +66,7 @@
                 <div class="tracking-card__body">
                     <div class="tracking-card__time">Полезные ссылки</div>
                     <br>
-                    <div class="tracking-card__prev-period">От сайтов школ до википедии</div>
+                    <div class="tracking-card__prev-period">Больше нет необходимости искать полезные сайты</div>
                 </div>
             </article>
         </div>
@@ -97,11 +87,10 @@
 
 
 <script>
-    document.getElementById('ekj').onclick = function () {window.location.href = "http://localhost:3002/pocketsages/ekj"}
-    document.getElementById('actirovka').onclick = function () {window.location.href = "http://localhost:3002/pocketsages/actirovka"}
-    document.getElementById('notes').onclick = function () {window.location.href = "http://localhost:3002/pocketsages/notes"}
-    document.getElementById('links').onclick = function () {window.location.href = "http://localhost:3002/pocketsages/links"}
-    document.getElementById('calc').onclick = function () {window.location.href = "http://localhost:3002/pocketsages/calculator"}
+    document.getElementById('ekj').onclick = function () {window.location.href = "http://localhost:3002/pocketsage/ekj"}
+    document.getElementById('actirovka').onclick = function () {window.location.href = "http://localhost:3002/pocketsage/actirovka"}
+    document.getElementById('links').onclick = function () {window.location.href = "http://localhost:3002/pocketsage/links"}
+    document.getElementById('calc').onclick = function () {window.location.href = "http://localhost:3002/pocketsage/calculator"}
 </script>
 
 
