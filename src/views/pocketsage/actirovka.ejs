@@ -48,11 +48,14 @@
 <br>
 <div style="text-align: center; font-size: 25px">2 Смена: </div>
 <br><br><br>
-<div style="text-align: center; font-size: 25px">Текущая температура: </div>
+<div style="text-align: center; font-size: 25px">Текущая температура: <%= temperature%> </div>
 <br>
-<div style="text-align: center; font-size: 25px">Текущая скорость ветра: </div>
+<div style="text-align: center; font-size: 25px">Текущая скорость ветра: <%= windSpeed%> </div>
 
 <script>
+    document.getElementById('check_').addEventListener('click', ()=> {
+        location.reload()
+    })
 </script>
 
     <div style="position:fixed; left:0; bottom:0; width:100%; text-align:center; font-size: 14px">Coded By Vuimov Nikita</div>

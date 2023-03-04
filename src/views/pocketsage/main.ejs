@@ -18,11 +18,11 @@
         <div class="dashboard__person">
             <div class="info-card">
                 <div class="info-card__text">
-                    <% if(user.name !== 'no_information323') { %>
+                    <% if(name !== 'no_information323') { %>
                         <p class="info-card__subtitle"> Карточка ученика </p>
                         <br>
-                        <h3 class="info-card__title"><%= user.name %></h3>
-                        <p class="info-card__school"> Школа № <%= user.school %></p>
+                        <h3 class="info-card__title"><%= name %></h3>
+                        <p class="info-card__school"> Школа № <%= school %></p>
                     <% } else { %>
                         <br>
                         <h3 class="info-card__title"><a href="http://localhost:3002/pocketsage/card_settings" class="card_but" style="font-size: 30px">Настройте карточку ученика</a> </h3>

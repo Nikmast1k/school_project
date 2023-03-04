@@ -293,7 +293,7 @@
 
 </style>
 
-<% if(user.isLogged) { %>
+<% if(isLogged === 1) { %>
     <div style="text-align: center;"><h1>Электронный дневник</h1></div>
     <br>
 
@@ -356,7 +356,7 @@
                                 </div>\
                                 <form class="login-card-form" action="http://localhost:3002/pocketsage">\
                                     <div class="form-item">\
-                                        <input type="text" placeholder="Дата" id="emailForm"\
+                                        <input type="text" placeholder="01.01" id="emailForm"\
                                                autofocus required>\
                                     </div>\
                                     <button type="submit" >Проверить ДЗ</button>\

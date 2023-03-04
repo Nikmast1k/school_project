@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>PocketSage</title>
     <style>
         .login-card {
@@ -29,9 +30,6 @@
         /* ---------- */
 
         /* Login Card Logo */
-        .login-card-logo {
-            margin-bottom: 2rem;
-        }
 
         .login-card-logo img {
             width: 60px;
@@ -39,11 +37,6 @@
         /* ---------- */
 
         /* Login Card Standard */
-        .login-card-logo,
-        .login-card-header,
-        .login-card-footer {
-            text-align: center;
-        }
 
         .login-card a {
             text-decoration: none;
@@ -92,20 +85,9 @@
         }
 
 
-        .login-card-form .form-item-other {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: calc(1rem * .8);
-            margin-bottom: .5rem;
-        }
         /* ---------- */
 
         /* Login Card Footer */
-        .login-card-footer {
-            margin-top: 1.5rem;
-            font-size: calc(1rem * .8);
-        }
         /* ---------- */
 
         /* Login Card Form Elements */
@@ -150,26 +132,12 @@
         /* ---------- */
 
         /* Login Card Social Buttons */
-        .login-card-social {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
 
         .login-card-social>div {
             opacity: .8;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: calc(1rem * .8);
-        }
-
-        .login-card-social-btns {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
         }
 
         .login-card-social-btns a {
@@ -207,36 +175,74 @@
     </style>
 </head>
 <body>
-
-<div style="text-align: center;"><h1 style="font-size: 40px">Настройка карточки</h1></div>
+<div style="text-align: center;">
+    <h1 style="font-size: 40px">Настройка карточки</h1>
+</div>
 
 <div style="display: flex; justify-content: center; align-items: center;">
     <div class="login-card-container">
         <div class="login-card">
             <div class="login-card-header">
-                <h1 style="font-size: 23px">Расскажите о себе</h1>
+                <h1 style="font-size: 23px; cursor: pointer" id="4554">Расскажите о себе</h1>
             </div>
             <br>
-            <form class="login-card-form" action="http://localhost:3002/pocketsage">
+            <form class="login-card-form">
                 <div class="form-item">
-                    <input type="text" placeholder="Имя" id="text"
-                           autofocus required>
+                    <input type="text" placeholder="Имя" id="text1" autofocus required>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">lock</span>
-                    <input type="text" placeholder="Номер школы" id="text"
-                           required>
+                    <input type="text" placeholder="Номер школы" id="text2" required>
                 </div>
-                <button type="submit" >Сохранить</button>
+                <button type="button" id="btn_save">Сохранить</button>
             </form>
         </div>
     </div>
 </div>
 
-
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let btn = document.getElementById('btn_save')
+        if (!btn) {
+            console.error("Button not found!")
+        } else {
+            btn.addEventListener('click', function () {
+                console.log('clicked!')
+                let name = document.getElementById('text1').value
+                let school = document.getElementById('text2').value
+                let login = userInfo.login
+                let password = userInfo.password
+                let isLogged = userInfo.is_logged
+
+                console.log(name, school)
+
+                $.ajax({
+                    type: "POST",
+                    url: `http://localhost:4050/db/${userId}`, // Use userId variable here
+                    data: JSON.stringify({
+                        name: `${name}`,
+                        scnmb: `${school}`,
+                        login: `${login}`,
+                        password: `${password}`,
+                        isLogged: `${isLogged}`
+                    }),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+
+            })
+        }
+    })
 </script>
 
 <div style="position:fixed; left:0; bottom:0; width:100%; text-align:center; font-size: 14px">Coded By Vuimov Nikita</div>
 </body>
+
+
 </html>
