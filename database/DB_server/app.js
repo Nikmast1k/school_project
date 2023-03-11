@@ -1,9 +1,12 @@
 const express = require('express')
 const mysql = require('mysql')
 const bodyParser = require('body-parser')
-
 const app = express()
+app.use(bodyParser.urlencoded({ extended: true }))
 const jsonParser = bodyParser.json()
+app.use(express.json())
+app.use(bodyParser.json())
+
 
 app.get('/db/:userId', async (req, res) => {
     const { userId } = req.params
@@ -77,6 +80,65 @@ app.post('/db/:userId', jsonParser, async (req, res) => {
                 const sql1 = 'UPDATE user_info SET name = ?, scnmb = ?, login = ?, password = ?, is_logged = ? WHERE id = ?';
 
                 conn.query(sql1, [name, scnmb, login, password, isLogged, userId], (err, result) => {
+                    if (err) {
+                        conn.rollback(() => {
+                            console.log(err);
+                            res.status(500).send('Error updating user');
+                        });
+                    } else {
+                        conn.commit(err => {
+                            if (err) {
+                                conn.rollback(() => {
+                                    console.log(err);
+                                    res.status(500).send('Error updating user');
+                                });
+                            } else {
+                                console.log('User updated successfully');
+                                res.send('User updated successfully');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send('Database error');
+    }
+});
+
+app.post('/db/card/:userId/:name/:scnmb', async (req, res) => {
+    try {
+        const conn = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            database: 'testdb',
+            password: ''
+        });
+
+        console.log(req.params)
+        const userId = req.params.userId;
+        const name = req.params.name;
+        const scnmb = req.params.scnmb;
+
+
+        conn.connect(err => {
+            if (err) {
+                console.log(err);
+                res.status(500).send('Error connecting to database');
+            } else {
+                console.log('DATABASE ----- CONNECTED SUCCESSFULLY');
+            }
+        });
+
+        conn.beginTransaction(err => {
+            if (err) {
+                console.log(err);
+                res.status(500).send('Error updating user');
+            } else {
+                const sql1 = 'UPDATE user_info SET name = ?, scnmb = ? WHERE id = ?';
+
+                conn.query(sql1, [name, scnmb, userId], (err) => {
                     if (err) {
                         conn.rollback(() => {
                             console.log(err);

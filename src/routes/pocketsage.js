@@ -5,6 +5,8 @@ const cheerio = require('cheerio');
 const axios = require('axios')
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
+const cors = require('cors');
+
 
 
 const user = {
@@ -115,7 +117,9 @@ router.get('/pocketsage/log_in', (req, res) => {
 
 let userId;
 
-router.get('/pocketsage/card_settings', (req, res) => {
+router.get('/pocketsage/card_settings', cors({
+    origin: 'http://localhost:3002'
+}), (req, res) => {
     const DATABASE_URL = process.env.DATABASE_URL || "http://localhost:4050"
     userId = 4;
     axios
@@ -123,11 +127,11 @@ router.get('/pocketsage/card_settings', (req, res) => {
         .then(result => {
             console.log(result.data)
             res.render('./pocketsage/card_settings.ejs', {
-                userInfo:result.data[0],
                 userId: userId
             })
         })
 })
+
 
 router.get('/pocketsage/error_feedback', (req, res) => {
     res.render('./pocketsage/error_feedback.ejs', {})

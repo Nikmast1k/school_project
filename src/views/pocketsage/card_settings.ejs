@@ -201,6 +201,7 @@
 </div>
 
 <script>
+
     document.addEventListener('DOMContentLoaded', () => {
         let btn = document.getElementById('btn_save')
         if (!btn) {
@@ -208,33 +209,29 @@
         } else {
             btn.addEventListener('click', function () {
                 console.log('clicked!')
+
                 let name = document.getElementById('text1').value
-                let school = document.getElementById('text2').value
-                let login = userInfo.login
-                let password = userInfo.password
-                let isLogged = userInfo.is_logged
+                let scnmb = Number(document.getElementById('text2').value)
+                let userID = <%= userId %>
 
-                console.log(name, school)
 
-                $.ajax({
-                    type: "POST",
-                    url: `http://localhost:4050/db/${userId}`, // Use userId variable here
-                    data: JSON.stringify({
-                        name: `${name}`,
-                        scnmb: `${school}`,
-                        login: `${login}`,
-                        password: `${password}`,
-                        isLogged: `${isLogged}`
-                    }),
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function(data) {
-                        console.log(data);
+                const url = `http://localhost:4050/db/card/${userID}/${name}/${scnmb}`
+
+                fetch(url, {
+                    mode: 'no-cors',
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
                     },
-                    error: function(xhr, status, error) {
-                        console.log(xhr.responseText);
-                    }
-                });
+                    body: ({})
+                })
+                    .then(response => {
+                        console.log(response)
+                        window.location.href = 'http://localhost:3002/pocketsage'
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
 
             })
         }

@@ -1,11 +1,12 @@
 const express = require('express')
 const path = require("path")
+const cors = require('cors')
 require('dotenv').config({ path: './.env' })
 //app
 const app = express()
 
 app.use(express.urlencoded())
-
+app.use(cors())
 app.set("view engine", "ejs")
 
 app.use("/", express.static(path.join(__dirname, "public")))
